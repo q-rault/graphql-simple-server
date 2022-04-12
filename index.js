@@ -18,7 +18,7 @@ const typeDefs = gql`
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
     books: [Book]
-    getBookById(id: ID!): Book
+    getBookById(bookId: ID!): Book
   }
 
   type Mutation {
@@ -46,7 +46,7 @@ const books = [
 const resolvers = {
   Query: {
     books: () => books,
-    getBookById: (_, args) => books.find((book) => book.id == args.id),
+    getBookById: (_, args) => books.find((book) => book.id == args.bookId),
   },
 
   Mutation: {
